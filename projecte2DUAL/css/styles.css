@@ -92,6 +92,22 @@ margin-top: 50px;
 	border-bottom: 1px solid black;
 }
 
+
+#bodymodificacioperfil {
+	width: 1015px;
+	margin-top:50px;
+}
+
+#bodymodificacioperfil h4{
+	border-bottom: 1px solid black;
+}
+
+
+
+
+
+
+
 #datanaixementbox input{
 	width: 210px;
 	height: 36px;
@@ -103,7 +119,7 @@ footer {
 	color: white;
 	padding-left: 200px;
 	padding-right: 100px;
-	position: static !important;
+	
 }
 
 footer a {	
