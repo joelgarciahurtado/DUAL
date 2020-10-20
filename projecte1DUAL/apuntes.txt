@@ -1,0 +1,2 @@
+https://www.w3resource.com/javascript/form/password-validation.php
+https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page

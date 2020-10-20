@@ -1,0 +1,104 @@
+body {
+	font-family: 'Arimo';
+}
+
+
+
+.header {
+	overflow: hidden;
+	padding-top: 10px;	
+	height: 30px;
+	width: 100%;
+	border-bottom: 1px solid grey;
+	background-color: rgb(7, 8, 31);
+}
+
+
+
+.instagram img {
+	width: 20px;
+	float: right;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+
+.facebook img {
+	width: 20px;
+	float: right;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+
+.twitter img {
+	width: 20px;
+	float: right;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+
+
+.inici {
+	width: 20px;
+	margin-left: 40px;
+	padding-right: 5px;
+	text-decoration: none;
+	color:white;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 2px;
+}
+
+.quisom {
+	width: 20px;
+	padding-left: 10px;
+	padding-right: 5px;
+	text-decoration: none;
+	color:white;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 2px;
+}
+
+.branding {
+	width: 20px;
+	padding-left: 10px;
+	padding-right: 5px;
+	text-decoration: none;
+	color:white;	
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 2px;	
+
+}
+
+.registre {
+
+	width: 20px;
+	padding-right: 5px;
+	text-decoration: none;
+	margin-left: 500px;
+	position: relative;
+	color:rgb(235, 168, 45);	
+}
+
+ .socialcard { 
+            width: 20%; 
+            background-color: white; 
+            margin: 3%; 
+            border: 1px solid; 
+        } 
+  
+        .textcard1 { 
+            text-align: center; 
+            padding: 10px; 
+        } 
+
+         .textcard1 { 
+            text-align: center; 
+            padding: 10px; 
+        } 
+
+.textcard3 { 
+	text-align: center; 
+    padding: 10px; 
+} 

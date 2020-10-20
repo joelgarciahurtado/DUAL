@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Socialize/registre</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet'>
+		
+	</head>
+	<body>
+		<header>
+			<a href="index.html" class="inici">Inici</a>
+			<a href="https://ca-es.facebook.com/" class="quisom">Qui som?</a>
+			<a href="branding" class="branding">Interessat/ada en el nostre branding?</a>
+			<a href="registre.html" class="registre">registra't</a>
+			<a href="https://ca-es.facebook.com/" target="blank" class="facebook"><img src="img/facebook.png" alt="logo facebook"></a>
+			<a href="https://www.instagram.com/?hl=sr" target="blank" class="instagram"><img src="img/insta.png" alt="logo instagram"></a>
+			<a href="https://twitter.com/?lang=ca" target="blank" class="twitter"><img src="img/twitter.png" alt="logo twitter"></a>
+		</header>
+
+	<section>
+		<article>
+				<form action="#">
+					<label for="Nom de usuari">Nom d'usuari</label><br>
+					<input type="text" name="Nom de usuari" required minlength="4"><br>
+					<label for="password">Contrasenya (8 caracters, una minuscula,mayuscula,un nombre i un símbol)</label><br>
+					<input type="password" name="password" id="password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'><br>
+
+					<label for="passwordconfirm">Confirma Contrasenya</label><br>
+					<input type="password" name="passwordconfirm" id="passwordconfirm" required minlength="8" onkeyup='check();'><br>
+					<span id="menssatge"></span><br>
+					<label for="email">Correu electrónic</label><br>
+					<input type="email" name="email" required><br>
+					<label for="nom">Nom</label><br>
+					<input type="text" name="nom" required><br>
+					<label for="cognom">Cognom</label><br>
+					<input type="text" name="cognom" required><br>
+					<label for="2cognom">Segón Cognom</label><br>
+					<input type="text" name="2cognom" required><br>
+					<label for="naixement">Data de naixement</label><br>
+					<input type="date" name="naixement" required><br>
+					<label for="tlf">teléfon</label><br>
+					<input type="tel" name="tlf" required><br>
+					<label for="perfilcolor">Color de Perfil</label><br>
+					<input type="color" name="perfilcolor" required><br><br>
+					 <input type="radio" id="male" name="gender" value="home" required>
+  					<label for="home">Home</label><br>
+ 					 <input type="radio" id="dona" name="gender" value="dona">
+ 					 <label for="dona">Dona</label><br>
+ 					 <input type="radio" id="altre" name="altre" value="altre">
+  					<label for="altre">altre</label><br><br>
+  					<button type="submit" value="envia">Crear compte</button>
+				</form>
+		</article>
+		<article>
+		</article>
+	</section>
+		<footer>
+			<p>tots els drets reservats, fet per Joel Garcia Hurtado</p>
+			<p>aquesta pàgina guarda cookies de sessió. <a href="https://es.wikipedia.org/wiki/Cookie_(inform%C3%A1tica)" id="cookies">mes informació</a></p>
+		</footer>
+		<script src="scripts.js" language="javascript" type="text/javascript"></script>
+</body>
+</html>
