@@ -29,13 +29,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Espectacles` (
-  `ID_Espectacle` int(11) NOT NULL,
+
+  `ID_Espectacle` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `Nom_Espectacle` varchar(255) NOT NULL,
   `Data` text NOT NULL,
   `Hora` text NOT NULL,
   `descripcio` text NOT NULL,
   `Preu` int(11) NOT NULL,
-  `FK_ID_Recinte` int(11) NOT NULL
+  `FK_ID_Recinte` int(11) NOT NULL,
+	FOREIGN KEY (FK_ID_Recinte) REFERENCES Recinte(ID_Recinte
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
