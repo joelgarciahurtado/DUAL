@@ -1,26 +1,28 @@
 <?php
 
 include_once __DIR__."/php/conexion.php";
+
 session_start();
 
 	if (isset($_POST['login'])) {
 
 		$email = $_POST['email'];
-		$password = $_POST['password'];
-		//encriptando contraseña con md5
-		$_POST['password']="'".md5($_POST['password'])."'";
 
-		$query = $pdo->prepare("SELECT * FROM Usuaris WHERE email=:email");
-		$query->bindParam("email", $email, PDO::PARAM_STR);
+		$password = md5($_POST['password']);
+
+		$consulta = "SELECT * FROM Usuaris WHERE email ='$email' and Password = '$password'";
+
+		$query = $pdo->prepare($consulta);
+
 		$query->execute();
 
 		$result = $query->fetch(PDO::FETCH_ASSOC);
 
-		if (!$result) {
+		if ($result == null) {
         echo '<p>email o contrasenya incorrectes</p>';
     } else {
-    	if (password_verify($password, $result['PASSWORD'])) {
-    		$_SESSION['user_id'] = $result['ID_USUARI'];
+    	if ($password == $result['Password']) {
+    		$_SESSION['user_id'] = $result['ID_Usuari'];
     		echo '<p>Usuari loggejat</p>';
     	} else {
     		echo '<p>email o contrasenya incorrectes</p>';
@@ -28,6 +30,7 @@ session_start();
 	}
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ca">
@@ -215,8 +218,8 @@ session_start();
 						<p><input type="password" name="password" placeholder="contrasenya"></p>
 				    <input type="submit" name="login" value="Enviar">
 					</form>
-				  <p>No recordes la teva contrasenya? <a href="recuperacio.html">clica aqui</a></p>
-				  <p>registra't per obtenir un compte <a href="registre.html">clica aqui</a></p>
+				  <p>No recordes la teva contrasenya? <a href="recuperacio.php">clica aqui</a></p>
+				  <p>registra't per obtenir un compte <a href="registre.php">clica aqui</a></p>
 				</aside>
 			</div>
 
