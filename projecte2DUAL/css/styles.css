@@ -102,6 +102,14 @@ margin-top: 50px;
 	border-bottom: 1px solid black;
 }
 
+#bodyevent {
+	width: 1015px;
+	margin-top:50px;
+}
+
+#bodyevent h4{
+	border-bottom: 1px solid black;
+}
 
 
 
@@ -111,6 +119,17 @@ margin-top: 50px;
 #datanaixementbox input{
 	width: 210px;
 	height: 36px;
+}
+
+#selecciona {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+#reservesselect {
+	width: 210px;
+	height: 36px;
+	margin-bottom: 20px;
 }
 
 footer {

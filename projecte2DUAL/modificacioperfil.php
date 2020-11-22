@@ -139,7 +139,7 @@
 
   <header>
       <div class="headeresquerra">
-          <a href="index.html"><img src="img/logo2.png" class="img-fluid" id="logo" alt="logo de la pàgina web"/></a>
+          <a href="index.php"><img src="img/logo2.png" class="img-fluid" id="logo" alt="logo de la pàgina web"/></a>
         </div>
           <div class="titol">
             <h5>Modifica el teu perfil</h5>
@@ -171,7 +171,7 @@
                 <input type="text" name="cognom1" placeholder="Primer Cognom*" required>
               </div>
               <div class="col-xl-4">
-                <input type="text" name="cognom2" placeholder="Segon Cognom*" required>
+                <input type="text" name="cognom2" placeholder="Segón Cognom*" required>
               </div>
            </div>
 
@@ -247,8 +247,8 @@
           <p><input type="password" name="password" placeholder="contrasenya"></p>
           <input type="submit" value="Enviar">
         </form>
-        <p>No recordes la teva contrasenya? <a href="recuperacio.html">clica aqui</a></p>
-        <p>registra't per obtenir un compte <a href="registre.html">clica aqui</a></p>
+        <p>No recordes la teva contrasenya? <a href="recuperacio.php">clica aqui</a></p>
+        <p>registra't per obtenir un compte <a href="registre.php">clica aqui</a></p>
       </aside>
     </div>
   </div>

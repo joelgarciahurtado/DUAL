@@ -139,7 +139,7 @@
 
   <header>
       <div class="headeresquerra">
-          <a href="index.html"><img src="img/logo2.png" class="img-fluid" id="logo" alt="logo de la pàgina web"/></a>
+          <a href="index.php"><img src="img/logo2.png" class="img-fluid" id="logo" alt="logo de la pàgina web"/></a>
         </div>
           <div class="titol">
             <h5>Canvia de contrasenya</h5>
@@ -158,10 +158,11 @@
         <section>
           <article>
             <h4>Canvia de contrasenya</h4>
-            <p>Des d'aquí pots crear una nova contrasenya. Te l'enviarem a la teva adreça electrónica. Un cop rebuda et recomanem que la canviis.</p>
+            <p>Des d'aquí pots canviar la teva contrasenya d'accés a la web.</p>
             <form>
-              <input type="email" name="email" placeholder="adreça de correu:">
-              <input type="submit" value="Enviar">
+              <input type="password" name="password" placeholder="contrasenya">
+              <input type="password" name="passwordconfirm" placeholder="contrasenya">
+              <p class="mt-3 mb-3"><input type="submit" value="Enviar"></p>
             </form>
           </article>
         </section>

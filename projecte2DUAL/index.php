@@ -1,3 +1,70 @@
+<?php
+
+include_once __DIR__."/php/conexion.php";
+
+session_start();
+
+	if (isset($_POST['login'])) {
+
+		$email = $_POST['email'];
+
+		$password = md5($_POST['password']);
+
+		$consulta = "SELECT * FROM Usuaris WHERE email ='$email' and Password = '$password'";
+
+		$query = $pdo->prepare($consulta);
+
+		$query->execute();
+
+		$result = $query->fetch(PDO::FETCH_ASSOC);
+
+		if ($result == null) {
+        echo '<p>email o contrasenya incorrectes</p>';
+    } else {
+    	if ($password == $result['Password']) {
+    		$_SESSION['user_id'] = $result['ID_Usuari'];
+			echo '<p>Usuari loggejat</p>';
+			$_SESSION['logged']=TRUE;
+    	} else {
+    		echo '<p>email o contrasenya incorrectes</p>';
+    	}
+	}
+
+	if ($_SESSION['logged']) {
+	?>
+				<div class="col-xl-3" id="divaside">
+				<aside>
+					<h4>Menú d'usuari</h4>
+					<form method="POST" action="" name="menuusuariform">
+				    <a href="modificacioperfil.php">Edita el teu perfil</a>
+					<a href="modificacioperfil.php">Historial de compres</a>
+					<a href="canviacontrasenya.php">Canvi de contrasenya</a>
+					<a href=>Canvi de contrasenya</a>
+					</form>
+				  <p>No recordes la teva contrasenya? <a href="recuperacio.php">clica aqui</a></p>
+				  <p>registra't per obtenir un compte <a href="registre.php">clica aqui</a></p>
+				</aside>
+			</div>
+
+<?php
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -139,7 +206,7 @@
 
   <header>
   		<div class="headeresquerra">
-          <a href="index.html"><img src="img/logo2.png" class="img-fluid" id="logo" alt="logo de la pàgina web"/></a>
+          <a href="index.php"><img src="img/logo2.png" class="img-fluid" id="logo" alt="logo de la pàgina web"/></a>
         </div>
         	<div class="titol">
         		<h5>Venda d'entrades</h5>
@@ -179,13 +246,13 @@
 			<div class="col-xl-3" id="divaside">
 				<aside>
 					<h4>Accés</h4>
-					<form>
+					<form method="POST" action="" name="loginform">
 						<p><input type="email" name="email" placeholder="adreça de correu electrónic"></p>
 						<p><input type="password" name="password" placeholder="contrasenya"></p>
-				    <input type="submit" value="Enviar">
+				    <input type="submit" name="login" value="Enviar">
 					</form>
-				  <p>No recordes la teva contrasenya? <a href="recuperacio.html">clica aqui</a></p>
-				  <p>registra't per obtenir un compte <a href="registre.html">clica aqui</a></p>
+				  <p>No recordes la teva contrasenya? <a href="recuperacio.php">clica aqui</a></p>
+				  <p>registra't per obtenir un compte <a href="registre.php">clica aqui</a></p>
 				</aside>
 			</div>
 
