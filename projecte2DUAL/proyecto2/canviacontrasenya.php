@@ -1,38 +1,3 @@
-<?php
-
-include_once __DIR__."/php/conexion.php";
-
-session_start();
-
-	if (isset($_POST['login'])) {
-
-		$email = $_POST['email'];
-
-		$password = md5($_POST['password']);
-
-		$consulta = "SELECT * FROM Usuaris WHERE email ='$email' and Password = '$password'";
-
-		$query = $pdo->prepare($consulta);
-
-		$query->execute();
-
-		$result = $query->fetch(PDO::FETCH_ASSOC);
-
-		if ($result == null) {
-        echo '<p>email o contrasenya incorrectes</p>';
-    } else {
-    	if ($password == $result['Password']) {
-    		$_SESSION['user_id'] = $result['ID_Usuari'];
-			$_SESSION['logged']=TRUE;
-    	} else {
-    		echo '<p>email o contrasenya incorrectes</p>';
-    	}
-	} 
-
-}
-
-?>
-
  <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -43,11 +8,17 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-  <?php
 
-  include_once __DIR__."/header.php";
-
-  ?>
+  <header>
+      <div class="headeresquerra">
+          <a href="index.php"><img src="img/logo2.png" class="img-fluid" id="logo" alt="logo de la pàgina web"/></a>
+        </div>
+          <div class="titol">
+            <h5>Canvia de contrasenya</h5>
+          </div>
+        <div class="headerdreta">
+        </div>
+  </header>
 
 
 
@@ -61,33 +32,52 @@ session_start();
             <p>Des d'aquí pots canviar la teva contrasenya d'accés a la web.</p>
             <form>
               <input type="password" name="password" placeholder="contrasenya">
-              <input type="password" name="passwordconfirm" placeholder="contrasenya">
+              <input type="password" name="passwordconfirm" placeholder="confirma la contrasenya">
               <p class="mt-3 mb-3"><input type="submit" value="Enviar"></p>
             </form>
           </article>
         </section>
       </div>
 
-                <?php
-
-          if ($_SESSION['logged']) {
-
-            include_once __DIR__."/loggejat.php";
-
-          } else {
-            include_once __DIR__."/inicisessio.php";
-          }
-
-          ?>
+      <div class="col-xl-3" id="divaside">
+        <aside>
+            <h4>Accés</h4>
+            <form>
+              <p><input type="email" name="email" placeholder="adreça de correu electrónic"></p>
+              <p><input type="password" name="password" placeholder="contrasenya"></p>
+              <input type="submit" value="Enviar">
+            </form>
+            <p>No recordes la teva contrasenya? <a href="recuperacio.html">clica aqui</a></p>
+            <p>registra't per obtenir un compte <a href="registre.html">clica aqui</a></p>
+          </aside>
+      </div>
 
     </div>
 </div>
 
-  <?php
-
-  include_once __DIR__."/footer.php";
-
-  ?>
+<footer class="page-footer font-small pt-4 fixed-bottom" >
+    <div class="container-fluid text-center text-md-left">
+      <div class="row">
+        <div class="col-md-6 mt-md-0 mt-3">
+          <p>hola</p>
+          <p>hola</p>
+          <p>hola</p>
+          <p>hola</p>
+          <p>hola</p>
+          <p>Hola</p>
+          <p>Hola</p>
+        </div>
+        <hr class="clearfix w-100 d-md-none pb-3">
+        <div class="col-md-3 mb-md-0 mb-3">
+      <p>hola</p>
+          <p>Hola</p>
+        </div>
+        <div class="col-md-3 mb-md-0 mb-3">
+          <p>hola</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

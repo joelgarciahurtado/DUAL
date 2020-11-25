@@ -26,7 +26,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 8081:80
+      - 8082:81
     links:
       - mysql:joel
     environment:
