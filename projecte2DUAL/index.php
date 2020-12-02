@@ -49,6 +49,15 @@ session_start();
 
 		include_once __DIR__."/header.php";
 
+		//Hacer un select a la bd de todos los espectaculos
+
+		$consulta2 = "SELECT * FROM Espectacles";
+
+		$espectacles = $pdo->prepare($consulta2);
+
+		$espectacles->execute();	
+
+
 	?>
 
 
@@ -57,7 +66,39 @@ session_start();
 
 			<div class="col-xl-9" id="bodyinici">
 				<h4>Esdeveniments a la venda</h4>
-			  <div class="row">
+			 
+				<?php
+
+					$numEspectacle = 1;	
+					
+					foreach ($espectacles as $espectacle){
+						
+						if ($numEspectacle == 1 || $numEspectacle == 2){
+							echo "Titol: ". $espectacle['Nom_Espectacle'];
+							echo  "<img src=". $espectacle['Foto'].">";
+
+
+						}
+						else{
+
+
+
+
+
+
+						}
+						echo "</div>";
+
+
+
+
+
+
+					}
+
+				?>
+				
+			<!--	<div class="row">
 			    <div class="col">
 			      1 of 2
 			    </div>
@@ -77,7 +118,7 @@ session_start();
 			    </div>
 			  </div>
 			</div>
-
+				-->
 
 		<?php
 
