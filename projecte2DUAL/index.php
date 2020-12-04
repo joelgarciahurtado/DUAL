@@ -51,11 +51,13 @@ session_start();
 
 		//Hacer un select a la bd de todos los espectaculos
 
-		$consulta2 = "SELECT * FROM Espectacles";
+		$consulta2 = "SELECT distinct * FROM Espectacles ORDER BY Data";
 
 		$espectacles = $pdo->prepare($consulta2);
 
 		$espectacles->execute();	
+
+		$result = $espectacles->fetchAll();
 
 
 	?>
@@ -66,59 +68,41 @@ session_start();
 
 			<div class="col-xl-9" id="bodyinici">
 				<h4>Esdeveniments a la venda</h4>
+				<div class="row">
 			 
 				<?php
 
-					$numEspectacle = 1;	
+					$printevents = "";
+					$numEspectacle = 1;				
 					
-					foreach ($espectacles as $espectacle){
-						
-						if ($numEspectacle == 1 || $numEspectacle == 2){
-							echo "Titol: ". $espectacle['Nom_Espectacle'];
-							echo  "<img src=". $espectacle['Foto'].">";
 
-
-						}
-						else{
-
-
-
-
-
-
-						}
-						echo "</div>";
-
-
-
-
-
-
+					for($i = 0; $i<2; $i++){
+						$printevents .= "<div class='col-xl-6'>
+							<p>Titol: " . $result[$i]['Nom_Espectacle'] . 
+								"<p/><img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
+						</div>";
 					}
+
+
+
+					$tamanyrestant = sizeof($result);
+					//aixó fa que el següent bucle, sigui de la llargaria de el rest dels events per imprimir.
+
+
+					for($i = 2;$i<$tamanyrestant; $i++){
+						$printevents .= "<div class='col-xl-4'>
+							<p>Titol: " . $result[$i]['Nom_Espectacle'] . 
+								"<p/><img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
+						</div>";
+					}
+
+
+					echo $printevents;
 
 				?>
 				
-			<!--	<div class="row">
-			    <div class="col">
-			      1 of 2
-			    </div>
-			    <div class="col">
-			      2 of 2
-			    </div>
-			  </div>
-			  <div class="row">
-			    <div class="col">
-			      1 of 3
-			    </div>
-			    <div class="col">
-			      2 of 3
-			    </div>
-			    <div class="col">
-			      3 of 3
-			    </div>
 			  </div>
 			</div>
-				-->
 
 		<?php
 
