@@ -1,5 +1,6 @@
 body {
 	background-color: rgb(237, 240, 255);
+
 }
 
 header {
@@ -35,6 +36,10 @@ header img {
 .headerdreta a:hover {
   background-color: #ddd;
   color: black;
+}
+
+.container {
+	min-height: 500px !important; 
 }
 
 .titol h5{
@@ -112,11 +117,12 @@ margin-top: 50px;
 }
 
 
-
-
-
-
 #datanaixementbox input{
+	width: 182px;
+	height: 30px;
+}
+
+#inputentradas {
 	width: 210px;
 	height: 36px;
 }

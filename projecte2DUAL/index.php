@@ -4,32 +4,8 @@ include_once __DIR__."/php/conexion.php";
 
 session_start();
 
-	if (isset($_POST['login'])) {
 
-		$email = $_POST['email'];
-
-		$password = md5($_POST['password']);
-
-		$consulta = "SELECT * FROM Usuaris WHERE email ='$email' and Password = '$password'";
-
-		$query = $pdo->prepare($consulta);
-
-		$query->execute();
-
-		$result = $query->fetch(PDO::FETCH_ASSOC);
-
-		if ($result == null) {
-        echo '<p>email o contrasenya incorrectes</p>';
-    } else {
-    	if ($password == $result['Password']) {
-    		$_SESSION['user_id'] = $result['ID_Usuari'];
-			$_SESSION['logged']=TRUE;
-    	} else {
-    		echo '<p>email o contrasenya incorrectes</p>';
-    	}
-	} 
-
-}
+include_once __DIR__."/php/queryinicisessio.php";
 
 ?>
 
@@ -78,8 +54,10 @@ session_start();
 
 					for($i = 0; $i<2; $i++){
 						$printevents .= "<div class='col-xl-6'>
-							<p>Titol: " . $result[$i]['Nom_Espectacle'] . 
-								"<p/><img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
+							<p>Titol: " . $result[$i]['Nom_Espectacle'] . "</p>
+							<a href='event.php?id=".$result[$i]['ID_Espectacle']."'>
+								<img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
+							</a>
 						</div>";
 					}
 
@@ -91,8 +69,11 @@ session_start();
 
 					for($i = 2;$i<$tamanyrestant; $i++){
 						$printevents .= "<div class='col-xl-4'>
-							<p>Titol: " . $result[$i]['Nom_Espectacle'] . 
-								"<p/><img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
+							<p>Titol: " . $result[$i]['Nom_Espectacle'] . "</p>
+							<a href='event.php?id=".$result[$i]['ID_Espectacle']."'> 
+								<img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
+								<p></p>
+							</a>
 						</div>";
 					}
 

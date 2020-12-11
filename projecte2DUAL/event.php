@@ -1,8 +1,65 @@
+<?php
+
+include_once __DIR__."/php/conexion.php";
+
+session_start();
+
+
+include_once __DIR__."/php/queryinicisessio.php";
+
+
+
+if (isset($_POST['comprarentrades'])) {
+
+  $_POST['inputentradas'] = intval ($_POST['inputentradas']);
+
+  $update = "UPDATE Espectacles SET Asientos = Asientos - :quantitatentrades WHERE ID_Espectacle=:id";
+  $sql = $pdo->prepare($update);
+  $sql->bindParam(':quantitatentrades', $_POST['inputentradas']);
+  $sql->bindParam(':id', $_GET['id']);
+  $sql->execute();
+  }
+
+
+try{
+  $query = "SELECT * FROM Espectacles e INNER JOIN Recinte r ON e.FK_ID_Recinte=r.ID_Recinte WHERE e.ID_Espectacle= :id";
+  $sql = $pdo->prepare($query);
+
+  $sql->bindParam(':id', $_GET['id']);
+
+  $sql->execute();
+
+  $result = $sql->fetchAll();
+
+}catch(PDOException $e){
+  echo "Failed to get DB handle: " . $e->getMessage() . "\n";
+  exit;
+}
+
+$result = $result[0];
+
+$_SESSION['user_id'] = intval ($_SESSION['user_id']);
+
+$insert = "INSERT INTO Reserves (FK_ID_Espectacle, FK_ID_Usuari, entrades) VALUES (:id, :ID_Usuari, :quantitatentrades)";
+
+$sql = $pdo->prepare($insert);
+
+$sql->bindParam(':id', $_GET['id']);
+$sql->bindParam(':quantitatentrades', $_POST['inputentradas']);
+$sql->bindParam(':ID_Usuari', $_SESSION['user_id']);
+
+$sql->execute();
+
+
+?>
+
+
+
 
  <!DOCTYPE html>
 <html lang="ca">
 <head>
-	<title>PHP</title>
+	<title><?php echo $result['Nom_Espectacle'] ; ?></title>
 	    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -17,17 +74,19 @@
 
   ?>
 
+  
+
 
 
 <div class="container">
     <div class="row">
       
-      <div class="col-xl-9" id="bodyevent">
+      <div class="col" id="bodyevent">
         <section>
           <article>
-            <h4>TITULO DEL EVENTO</h4>
-            <img src="" alt="imagen del evento">
-            <p>definición del evento</p>
+            <h4><?php echo $result['Nom_Espectacle'] ; ?></h4>
+            <img src="<?php echo $result['Foto'] ;?>"class="img-fluid">
+            <p><?php echo $result['descripcio'] ; ?></p>
           </article>
         </section>
       </div>
@@ -35,23 +94,36 @@
       <div class="col-xl-3" id="divaside">
         <aside>
             <h4>Fitxa</h4>
-            <p>aqui va el nombre del evento, la fecha y hora, el lugar donde se celebra y el precio</p>
-            <form>
+            <p><?php echo $result['Nom_Espectacle'] ; ?></p>
+            <p><?php echo $result['Data'] ; ?></p>
+            <p><?php echo $result['Hora'] ; ?></p>
+            <p>Stock de entrades: <?php echo $result['Asientos'] ; ?></p>
+            <p><?php echo $result['Preu'] ; ?>€</p>
+            <form  method='POST'>
               <p>
                 <p id="selecciona"><label for="reserves">Selecciona:</label></p>
                 <select name="reservesselect" id="reservesselect">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="opel">Opel</option>
-                  <option value="audi">Audi</option>
+                  <option><?php echo $result['Data']." ".$result['Hora'] ; ?></option>
                 </select>
               </p>
-              <p><input type="email" name="email" placeholder="adreça de correu electrónic"></p>
-              <p><input type="password" name="password" placeholder="contrasenya"></p>
-              <input type="submit" value="Enviar">
-            </form>
-            <p>No recordes la teva contrasenya? <a href="recuperacio.php">clica aqui</a></p>
-            <p>registra't per obtenir un compte <a href="registre.php">clica aqui</a></p>
+
+<?php
+
+  if ($_SESSION['logged']) {
+    echo "<p>Selecciona el nombre de entrades que vols reservar</p>";
+    echo "<input type='number' id='inputentradas' name='inputentradas' min='1' max='". $result['Asientos'] ."'/>";
+    echo "<p><input type='submit' name='comprarentrades' value='Comprar entrades'></p>";
+    echo "</form>";
+  } else {
+    echo "</form>";
+    echo "<form method='POST' action='' name='loginform'>";
+    echo "<p><input type='email' name='email' placeholder='adreça de correu electrónic'></p>";
+    echo "<p><input type='password' name='password' placeholder='contrasenya'></p>";
+    echo "<input type='submit' name='login' value='Enviar'>";
+    echo "</form>";
+    }
+
+?>
           </aside>
       </div>
 
