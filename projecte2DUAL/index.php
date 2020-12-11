@@ -54,22 +54,23 @@ include_once __DIR__."/php/queryinicisessio.php";
 
 					for($i = 0; $i<2; $i++){
 						$printevents .= "<div class='col-xl-6'>
-							<p>Titol: " . $result[$i]['Nom_Espectacle'] . "</p>
+							<p class='text-info'>" . $result[$i]['Nom_Espectacle'] . "</p>
 							<a href='event.php?id=".$result[$i]['ID_Espectacle']."'>
 								<img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
 							</a>
+							<p></p>
 						</div>";
 					}
 
 
 
 					$tamanyrestant = sizeof($result);
-					//aixó fa que el següent bucle, sigui de la llargaria de el rest dels events per imprimir.
+					//aixó fa que el següent bucle sigui de la llargaria del rest dels events per imprimir.
 
 
 					for($i = 2;$i<$tamanyrestant; $i++){
 						$printevents .= "<div class='col-xl-4'>
-							<p>Titol: " . $result[$i]['Nom_Espectacle'] . "</p>
+							<p class='text-info'>" . $result[$i]['Nom_Espectacle'] . "</p>
 							<a href='event.php?id=".$result[$i]['ID_Espectacle']."'> 
 								<img src='" . $result[$i]['Foto'] . "'class='img-fluid'>
 								<p></p>
