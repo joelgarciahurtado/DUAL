@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql
--- Tiempo de generación: 11-12-2020 a las 21:37:23
+-- Tiempo de generación: 15-12-2020 a las 22:16:29
 -- Versión del servidor: 5.7.32
 -- Versión de PHP: 7.4.11
 
@@ -26,6 +26,11 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `Espectacles`
 --
+
+
+CREATE DATABASE IF NOT EXISTS reserva_de_entrades;
+
+USE reserva_de_entrades;
 
 CREATE TABLE `Espectacles` (
   `ID_Espectacle` int(11) NOT NULL,
@@ -108,10 +113,8 @@ CREATE TABLE `Usuaris` (
 --
 
 INSERT INTO `Usuaris` (`ID_Usuari`, `Nom_Usuari`, `Cognom1`, `Cognom2`, `Direccio`, `CP`, `Telefon`, `Mobil`, `Password`, `Poblacio`, `Data_Naixement`, `Email`) VALUES
-(1, 'Joel', 'martinez', 'lopez', '08917', '8917', '616098276', '5645645456', 'de8544d74f25e7e45fc5507c037174bb', 'Santa Coloma', '2020-11-17', 'joelgarciabdn@gmail.com'),
-(2, 'admin', 'admin', 'admin', '08917', '8917', '23243244', '11111111', '21232f297a57a5a743894a0e4a801fc3', 'Santa Coloma', '2020-11-18', 'underbest2012@gmail.com'),
-(3, 'admin2', 'admin2', 'admin2', '08917', '8917', '616098276', '11111111', '21232f297a57a5a743894a0e4a801fc3', 'Santa Coloma', '2020-11-18', 'joelgarciabdn@gmail.com'),
-(4, 'admin3', 'admin3', 'admin3', '08917', '8917', '616098276', '11111111', '1145cbf42070c6704b66d6ac75347726', 'Santa Coloma', '2020-11-18', 'joelgarciabdn@gmail.com');
+(1, 'Joel2', 'martinez', 'lopez', 'Rambla batlloria', '08917', '933333333', '666666666', 'de8544d74f25e7e45fc5507c037174bb', 'Badalona', '2020-12-12', 'joelgarciabdn@gmail.com'),
+(5, 'Ana', 'Gutierrez', 'Woodman', 'carrer sin nom', '8917', '616098276', '5645645456', 'de8544d74f25e7e45fc5507c037174bb', 'Barcelona', '2020-04-27', 'anaguiterrez@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -169,7 +172,7 @@ ALTER TABLE `Reserves`
 -- AUTO_INCREMENT de la tabla `Usuaris`
 --
 ALTER TABLE `Usuaris`
-  MODIFY `ID_Usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Usuari` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
