@@ -31,6 +31,26 @@ session_start();
 
 }
 
+if (isset($_POST['modificarusuari'])) {
+
+  $ID_Usuari = $_SESSION["user_id"];
+
+  $sql = "UPDATE Usuaris SET Nom_usuari =?, Cognom1 =?, Cognom2 =?, Direccio =?, CP =?, Telefon =?, Mobil =?, Poblacio =?, Data_Naixement =?, Email=? WHERE ID_Usuari=$ID_Usuari";
+  $stmt= $pdo->prepare($sql);
+  $stmt->bindParam(1 , $_POST['nom']);
+  $stmt->bindParam(2 , $_POST['cognom1']);
+  $stmt->bindParam(3 , $_POST['cognom2']);
+  $stmt->bindParam(4 , $_POST['adrecapostal']);
+  $stmt->bindParam(5 , $_POST['codipostal']);
+  $stmt->bindParam(6 , $_POST['telefon']);
+  $stmt->bindParam(7 , $_POST['mobil']);
+  $stmt->bindParam(8 , $_POST['poblacio']);
+  $stmt->bindParam(9 , $_POST['datadenaixement']);
+  $stmt->bindParam(10 , $_POST['email']);
+  $stmt->execute();  
+  echo"<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +83,7 @@ session_start();
         <div class="container">
           
 
-          <form>
+          <form method="POST" action="">
 
             <div class="row m-3">
               <div class="col-xl-4">
@@ -130,7 +150,7 @@ session_start();
 
           <div class="row m-3">
             <div class="col-xl-12">
-            <input type="submit" value="Enviar">
+            <input type="submit" name="modificarusuari" value="Enviar" >
             </div>
           </div>
           

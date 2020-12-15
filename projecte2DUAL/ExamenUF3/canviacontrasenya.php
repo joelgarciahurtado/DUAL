@@ -4,19 +4,17 @@ include_once __DIR__."/php/conexion.php";
 
 session_start();
 
-if (isset($_POST['canviarcontrasenya'])) {
+	if (isset($_POST['canviarcontrasenya'])) {
 
-  $ID_Usuari = $_SESSION["user_id"];
+    $ID_Usuari = $_SESSION["ID_Usuari"];
 
-  $password = md5($_POST['password']);
- 
-  $sql = "UPDATE Usuaris SET Password=? WHERE ID_Usuari=$ID_Usuari";
-  $stmt= $pdo->prepare($sql);
-  $stmt->bindParam(1 , $password);
-  $stmt->execute();  
-  echo"<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";
+    $password = md5($_POST['password']);
+   
+		$sql = "UPDATE Usuaris SET Password=? WHERE ID_Usuari=$ID_Usuari";
+    $stmt= $pdo->prepare($sql);
+    $stmt->execute(array($password));  
+    echo"<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";
 }
-
 
 ?>
 
@@ -30,13 +28,6 @@ if (isset($_POST['canviarcontrasenya'])) {
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-  <?php
-
-  include_once __DIR__."/header.php";
-
-  ?>
-
-
 
 <div class="container">
     <div class="row">
@@ -47,10 +38,8 @@ if (isset($_POST['canviarcontrasenya'])) {
             <h4>Canvia de contrasenya</h4>
             <p>Des d'aquí pots canviar la teva contrasenya d'accés a la web.</p>
             <form method="POST" action="">
-              <input type="password" name="password" placeholder="contrasenya" required onkeyup='check();'>
-              <input type="password" name="passwordconfirm" placeholder="contrasenya" required onkeyup='check();'>
-              <span id="menssatge"></span>
-              <p class="mt-3 mb-3"><input type="submit" name="canviarcontrasenya" value="Enviar"></p>
+              <input type="password" name="password" placeholder="nova contrasenya">
+              <p class="mt-3 mb-3"><input  type="submit" name="canviarcontrasenya" value="Enviar"></p>
             </form>
           </article>
         </section>
@@ -71,15 +60,8 @@ if (isset($_POST['canviarcontrasenya'])) {
     </div>
 </div>
 
-  <?php
-
-  include_once __DIR__."/footer.php";
-
-  ?>
-
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script src="scripts.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> 
 </body>
 </html>
