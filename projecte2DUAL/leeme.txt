@@ -1,0 +1,13 @@
+COMO INICIAR EL PROYECTO
+
+
+1-Emplear el archivo docker-compose.yml que se proporciona. En una consola, viajar hasta la carpeta del proyecto, donde se deberá ejecutar el comando docker-compose up
+	-en caso de que esto de error, comprobar con docker ps que no se están utilizando ya servicios del docker, en caso de que si, detenerlos con docker stop.
+
+2- Importar la base de datos con el archivo .sql que se encuentra en la carpeta del proyecto, el archivo posee la intrucción de crear la base de datos si no existe, asi que no hace falta crearla previamente. Para importar la base de datos, viajar en el navegador a localhost:8081, con usuario root contraseña root y dentro del phpmyadmin, importar la base de datos.
+
+
+COMO VISUALIZAR Y/O UTILIZAR EL PROYECTO
+
+
+1-Simplemente escribiendo en el navegador localhost se viajará a la página principal del proyecto, donde se puede acceder a todas las funcionalidades del mismo. 
