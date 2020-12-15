@@ -10,7 +10,7 @@ var check = function () {
 }
 
 
-var check = function () {
+var check2 = function () {
   if (document.getElementById('password').value ==
     document.getElementById('passwordconfirm').value) {
     document.getElementById('menssatge').style.color = 'green';

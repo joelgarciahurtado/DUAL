@@ -47,8 +47,8 @@ if (isset($_POST['canviarcontrasenya'])) {
             <h4>Canvia de contrasenya</h4>
             <p>Des d'aquí pots canviar la teva contrasenya d'accés a la web.</p>
             <form method="POST" action="">
-              <input type="password" name="password" placeholder="contrasenya" required onkeyup='check();'>
-              <input type="password" name="passwordconfirm" placeholder="contrasenya" required onkeyup='check();'>
+              <input type="password" id="password" name="password" placeholder="contrasenya" required onkeyup='check2();'>
+              <input type="password" name="passwordconfirm" id="passwordconfirm" placeholder="contrasenya" required onkeyup='check2();'>
               <span id="menssatge"></span>
               <p class="mt-3 mb-3"><input type="submit" name="canviarcontrasenya" value="Enviar"></p>
             </form>

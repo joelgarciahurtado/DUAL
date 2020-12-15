@@ -6,16 +6,18 @@ session_start();
 
 include_once __DIR__."/php/queryinicisessio.php";
 
-$query = "SELECT * FROM (Espectacles e INNER JOIN Reserves r ON r.FK_ID_Espectacle=e.ID_Espectacle) INNER JOIN Recinte rec ON e.FK_ID_Recinte=rec.ID_Recinte WHERE r.FK_ID_Usuari= :ID_Usuari";
-  $sql = $pdo->prepare($query);
+if ($_SESSION['logged']) {
 
-  $sql->bindParam(':ID_Usuari', $_SESSION['user_id']);
+    $query = "SELECT * FROM (Espectacles e INNER JOIN Reserves r ON r.FK_ID_Espectacle=e.ID_Espectacle) INNER JOIN Recinte rec ON e.FK_ID_Recinte=rec.ID_Recinte WHERE r.FK_ID_Usuari= :ID_Usuari";
+    $sql = $pdo->prepare($query);
 
-  $sql->execute();
+    $sql->bindParam(':ID_Usuari', $_SESSION['user_id']);
 
-  $result = $sql->fetchAll();
+    $sql->execute();
 
-?>
+    $result = $sql->fetchAll();
+
+    ?>
 
  <!DOCTYPE html>
 <html lang="ca">
@@ -99,3 +101,11 @@ $query = "SELECT * FROM (Espectacles e INNER JOIN Reserves r ON r.FK_ID_Espectac
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> 
 </body>
 </html>
+
+<?php
+
+} else {
+    header('Location: index.php');
+}
+
+?>

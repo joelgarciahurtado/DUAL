@@ -4,6 +4,8 @@ include_once __DIR__."/php/conexion.php";
 
 session_start();
 
+if ($_SESSION['logged']) {
+
 	if (isset($_POST['login'])) {
 
 		$email = $_POST['email'];
@@ -190,3 +192,11 @@ if (isset($_POST['modificarusuari'])) {
 <script src="scripts.js"></script>
 </body>
 </html>
+
+<?php
+
+} else {
+    header('Location: index.php');
+}
+
+?>
